@@ -1,4 +1,11 @@
-Appendix A: Coming Soon
+---
+layout: page
+title: appendix
+tagline:
+description:
+---
+
+# Appendix A: Coming Soon
 
 
-Appendix B: Coming Soon
+# Appendix B: Coming Soon
