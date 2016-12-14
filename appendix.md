@@ -1,9 +1,12 @@
 ---
 layout: page
-title: appendix
+title: Appendix
 tagline:
 description:
 ---
+
+APPENDIX B
+============
 
 Introduction
 ============
