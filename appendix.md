@@ -61,7 +61,7 @@ points(w, PYgivena0w, pch = "0")
 ```
 ![stuff](AppendixBRoadmapChapter_files/figure-markdown_github/sim.dat-1.png "Title x")
 
-**Figure 1:** True model of *P(Y=1 | A=a,W=w)* 
+**Figure 1:** True model of P(Y=1 | A=a,W=w)
 
 
 Figure 1 depicts the probabilities of the outcome *Y* for the exposed (the 1s) and the unexposed (the 0s), by categories of the *W*, or *P*(*Y* ∣ *A*, *W*). The association of *A* with *Y* is stronger for lower values of *W*, as evidenced by the larger difference between the 1 and 0 data points on the plot. Using the example from the chapter, this depicts a situation in which physical abuse (*A*) has a stronger association with pychopathology in adulthood (*Y*) among those with lower childhood SES (*W*)
@@ -149,6 +149,8 @@ points(w, yprobobs[, 2], pch = "0")
 
 ![Figure 3: $\\hat{P}(Y=1 \\mid A=a,W=w)$ based on saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/get.true-1.png)
 
+**Figure 3:** Estimated P(Y=1|A=a,W=w) based on saturated model.
+
 This results in the following true value of the causal risk difference (CRD) :
 
 ``` r
@@ -156,12 +158,13 @@ This results in the following true value of the causal risk difference (CRD) :
 dt.out = data.frame(ey0.true, ey1.true, ey.true, crd.true, cpar.true)
 ```
 
-We examine the results in Table .
+We examine the results in Table 1.
 
 ``` r
 library(knitr)
 knitr::kable(dt.out, format = "markdown",caption="Screw you")
 ```
+**Table 1:** True Parameter Values.
 
 |  ey0.true|   ey1.true|    ey.true|   crd.true|  cpar.true|
 |---------:|----------:|----------:|----------:|----------:|
