@@ -149,25 +149,16 @@ This results in the following true value of the causal risk difference (CRD) :
 ``` r
 ## Accumulate results so far into a data.frame and table
 dt.out = data.frame(ey0.true, ey1.true, ey.true, crd.true, cpar.true)
-tab1 = xtable::xtable(dt.out, caption = "True Parameter Values", label = "tab1", 
-    digits = 4)
+# tab1=xtable::xtable(dt.out, caption = 'True Parameter Values', label =
+# 'tab1', digits = 4)
 ```
 
 We examine the results in Table .
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package % Wed Dec 14 12:08:10 2016
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrrrrr}
-  \hline
- & ey0.true & ey1.true & ey.true & crd.true & cpar.true \\ 
-  \hline
-1 & 0.1333 & 0.2745 & 0.1560 & 0.1412 & 0.0227 \\ 
-   \hline
-\end{tabular}
-\caption{True Parameter Values} 
-\label{tab1}
-\end{table}
+|  ey0.true|   ey1.true|    ey.true|   crd.true|  cpar.true|
+|---------:|----------:|----------:|----------:|----------:|
+|  0.133264|  0.2744858|  0.1559951|  0.1412218|  0.0227311|
+
 Estimators
 ==========
 
@@ -675,7 +666,7 @@ tab2 = xtable::xtable(res.ci, caption = "Estimation of CRD using estimators base
 
 We examine the results in . This is not the results of testing the performance with repeated simulations; it is just an example of the output one might get comparing these different estimators on one sample. To test performance, we would apply these four estimation approaches to repeated samples from the same data generating mechanism (say 1000 repetitions) and examine the bias relative to the true value of the parameters across these repeated samples, as well as the variance of the estimators. This would indicate how each estimator performs with respect to bias and variance for this data-generating mechanism.
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package % Wed Dec 14 12:08:15 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package % Fri Dec 16 16:34:17 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrr}
@@ -738,7 +729,7 @@ tab3 = xtable::xtable(res.ci, caption = "Estimation of CPAR using estimators bas
 
 We examine the results in .
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package % Wed Dec 14 12:08:15 2016
+% latex table generated in R 3.3.2 by xtable 1.8-2 package % Fri Dec 16 16:34:17 2016
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrr}
