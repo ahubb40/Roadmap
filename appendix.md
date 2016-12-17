@@ -60,7 +60,7 @@ plot(w, PYgivena1w, pch = "1", ylim = c(0, 0.5), xlab = "w", ylab = "P(Y=1|A=a,W
 points(w, PYgivena0w, pch = "0")
 ```
 
-![*P*(*Y*|*W*, *A*)](AppendixBRoadmapChapter_files/figure-markdown_github/sim.dat-1.png)
+![*P*(*Y*|*W*, *A*)](AppendixBRoadmapChapter_files/figure-markdown_github/sim.dat-2.png)
 
 **Figure 1: True model of P(Y | A,W)**
 
