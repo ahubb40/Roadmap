@@ -63,6 +63,7 @@ points(w, PYgivena0w, pch = "0")
 
 **Figure 1:** True model of *P(Y=1 | A=a,W=w)* 
 
+
 Figure 1 depicts the probabilities of the outcome *Y* for the exposed (the 1s) and the unexposed (the 0s), by categories of the *W*, or *P*(*Y* ∣ *A*, *W*). The association of *A* with *Y* is stronger for lower values of *W*, as evidenced by the larger difference between the 1 and 0 data points on the plot. Using the example from the chapter, this depicts a situation in which physical abuse (*A*) has a stronger association with pychopathology in adulthood (*Y*) among those with lower childhood SES (*W*)
 
 ``` r
