@@ -62,7 +62,7 @@ points(w, PYgivena0w, pch = "0")
 
 ![*P*(*Y*|*W*, *A*)](AppendixBRoadmapChapterForMD_files/figure-markdown_github/sim.dat-1.png)
 
-Figure Depicts the probabilities of the outcome *Y* for the exposed (the 1s) and the unexposed (the 0s), by categories of the *W*, or *P*(*Y* ∣ *A*, *W*). The association of *A* with *Y* is stronger for lower values of *W*, as evidenced by the larger difference between the 1 and 0 data points on the plot. Using the example from the chapter, this depicts a situation in which physical abuse (*A*) has a stronger association with pychopathology in adulthood (*Y*) among those with lower childhood SES (*W*)
+Figure 1 Depicts the probabilities of the outcome *Y* for the exposed (the 1s) and the unexposed (the 0s), by categories of the *W*, or *P*(*Y* ∣ *A*, *W*). The association of *A* with *Y* is stronger for lower values of *W*, as evidenced by the larger difference between the 1 and 0 data points on the plot. Using the example from the chapter, this depicts a situation in which physical abuse (*A*) has a stronger association with pychopathology in adulthood (*Y*) among those with lower childhood SES (*W*)
 
 ``` r
 ## Make plot of P(A=1|W)
@@ -73,7 +73,7 @@ plot(w, PAgivenW, type = "s", lty = 2, xlab = "w", ylab = "Propensity Score: P(A
 
 ![*P*(*A* = 1 ∣ *W*)](AppendixBRoadmapChapterForMD_files/figure-markdown_github/sim2.dat-1.png)
 
-Figure depicts the probabilities of the exposure *A* by categories of the *W*. The probability of of exposure A, also known as the propensity score, is higher for lower values of W. Using the example from the chapter, this depicts a situation in which there is a higher probability of physical abuse (A) among those with lower childhood SES (W).
+Figure  depicts the probabilities of the exposure *A* by categories of the *W*. The probability of of exposure *A*, also known as the propensity score, is higher for lower values of *W*. Using the example from the chapter, this depicts a situation in which there is a higher probability of physical abuse (*A*) among those with lower childhood SES (*W*).
 
 After generating and examining the simulated data, we now calculate the true values of the parameters of interest from the simulated data.
 
