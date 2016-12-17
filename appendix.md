@@ -75,7 +75,8 @@ plot(w, PAgivenW, type = "s", lty = 2, xlab = "w", ylab = "Propensity Score: P(A
 
 ![*P*(*A* = 1 ∣ *W*)](AppendixBRoadmapChapter_files/figure-markdown_github/sim2.dat-1.png)
 
-** Figure 2: The true treatment mechanism **
+**Figure 2:** The true treatment mechanism
+
 
 Figure 2 depicts the probabilities of the exposure *A* by categories of the *W*. The probability of of exposure A, also known as the propensity score, is higher for lower values of W. Using the example from the chapter, this depicts a situation in which there is a higher probability of physical abuse (A) among those with lower childhood SES (W).
 
