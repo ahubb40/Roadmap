@@ -60,7 +60,7 @@ plot(w, PYgivena1w, pch = "1", ylim = c(0, 0.5), xlab = "w", ylab = "P(Y=1|A=a,W
 points(w, PYgivena0w, pch = "0")
 ```
 
-![*P*(*Y*|*W*, *A*)](AppendixBRoadmapChapter_files/figure-markdown_github/sim.dat-1.png)
+![*P*(*Y*|*W*, *A*)](AppendixBRoadmapChapterForMD_files/figure-markdown_github/sim.dat-1.png)
 
 Figure Depicts the probabilities of the outcome *Y* for the exposed (the 1s) and the unexposed (the 0s), by categories of the *W*, or *P*(*Y* ∣ *A*, *W*). The association of *A* with *Y* is stronger for lower values of *W*, as evidenced by the larger difference between the 1 and 0 data points on the plot. Using the example from the chapter, this depicts a situation in which physical abuse (*A*) has a stronger association with pychopathology in adulthood (*Y*) among those with lower childhood SES (*W*)
 
@@ -71,7 +71,7 @@ plot(w, PAgivenW, type = "s", lty = 2, xlab = "w", ylab = "Propensity Score: P(A
     ylim = c(0, 0.2))
 ```
 
-![*P*(*A* = 1 ∣ *W*)](AppendixBRoadmapChapter_files/figure-markdown_github/sim2.dat-1.png)
+![*P*(*A* = 1 ∣ *W*)](AppendixBRoadmapChapterForMD_files/figure-markdown_github/sim2.dat-1.png)
 
 Figure depicts the probabilities of the exposure *A* by categories of the *W*. The probability of of exposure A, also known as the propensity score, is higher for lower values of W. Using the example from the chapter, this depicts a situation in which there is a higher probability of physical abuse (A) among those with lower childhood SES (W).
 
@@ -142,15 +142,13 @@ plot(w, yprobobs[, 1], pch = "1", ylim = c(0, 0.4), xlab = "w", ylab = expressio
 points(w, yprobobs[, 2], pch = "0")
 ```
 
-![$\\hat{P}(Y=1 \\mid A=a,W=w)$ based on saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/get.true-1.png)
+![$\\hat{P}(Y=1 \\mid A=a,W=w)$ based on saturated model](AppendixBRoadmapChapterForMD_files/figure-markdown_github/get.true-1.png)
 
 This results in the following true value of the causal risk difference (CRD) :
 
 ``` r
 ## Accumulate results so far into a data.frame and table
 dt.out = data.frame(ey0.true, ey1.true, ey.true, crd.true, cpar.true)
-# tab1=xtable::xtable(dt.out, caption = 'True Parameter Values', label =
-# 'tab1', digits = 4)
 ```
 
 We examine the results in Table .
@@ -319,7 +317,7 @@ predA1 = predict(glm1, newdata = datn, type = "response")
 lines(w, predA1, lty = 2, col = 2)
 ```
 
-![$\\hat{P}(Y=1 \\mid A=a,W=w)$ based on simpler model - the lines are the fit from simpler model whereas points from saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/plot.glm-1.png)
+![$\\hat{P}(Y=1 \\mid A=a,W=w)$ based on simpler model - the lines are the fit from simpler model whereas points from saturated model](AppendixBRoadmapChapterForMD_files/figure-markdown_github/plot.glm-1.png)
 
 ``` r
 ## Update results data.frame with glm results
@@ -444,7 +442,7 @@ p1 = predict(SLfit, plotdat)$pred
 lines(w, p1, lty = 2, col = 2)
 ```
 
-![$\\hat{P}(Y=1 \\mid A=a,W=w)$ based on SL fit - the lines are the fit from SL fit whereas points from saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/SL1-1.png)
+![$\\hat{P}(Y=1 \\mid A=a,W=w)$ based on SL fit - the lines are the fit from SL fit whereas points from saturated model](AppendixBRoadmapChapterForMD_files/figure-markdown_github/SL1-1.png)
 
 ``` r
 ## Udate results
@@ -660,28 +658,17 @@ res.ci = rbind(res.ci, c(est = crd.SL, se = se.SL, lower95 = crd.SL - 1.96 *
 res.ci = rbind(res.ci, c(est = crd.TMLE, se = se.tmle, lower95 = crd.TMLE - 
     1.96 * se.tmle, upper95 = crd.TMLE + 1.96 * se.tmle, pvalue = 2 * (1 - pnorm(abs(crd.TMLE/se.tmle)))))
 rownames(res.ci) = c("Simpler", "Sat", "SL", "TMLE")
-tab2 = xtable::xtable(res.ci, caption = "Estimation of CRD using estimators based on simple logistc regression (Simpler), saturated model (Sat: nonparametric), SuperLearning (SL) and TMLE", 
-    label = "tab2", digits = 4)
 ```
 
 We examine the results in . This is not the results of testing the performance with repeated simulations; it is just an example of the output one might get comparing these different estimators on one sample. To test performance, we would apply these four estimation approaches to repeated samples from the same data generating mechanism (say 1000 repetitions) and examine the bias relative to the true value of the parameters across these repeated samples, as well as the variance of the estimators. This would indicate how each estimator performs with respect to bias and variance for this data-generating mechanism.
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package % Fri Dec 16 16:34:17 2016
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrrrrr}
-  \hline
- & est & se & lower95 & upper95 & pvalue \\ 
-  \hline
-Simpler & 0.1887 & 0.0413 & 0.1078 & 0.2696 & 0.0000 \\ 
-  Sat & 0.1390 & 0.0411 & 0.0584 & 0.2197 & 0.0007 \\ 
-  SL & 0.1589 & 0.0448 & 0.0711 & 0.2466 & 0.0004 \\ 
-  TMLE & 0.1388 & 0.0418 & 0.0568 & 0.2208 & 0.0009 \\ 
-   \hline
-\end{tabular}
-\caption{Estimation of CRD using estimators based on simple logistc regression (Simpler), saturated model (Sat: nonparametric), SuperLearning (SL) and TMLE} 
-\label{tab2}
-\end{table}
+|         |        est|         se|    lower95|    upper95|     pvalue|
+|:--------|----------:|----------:|----------:|----------:|----------:|
+| Simpler |  0.1887089|  0.0412578|  0.1078436|  0.2695742|  0.0000048|
+| Sat     |  0.1390236|  0.0411499|  0.0583699|  0.2196773|  0.0007289|
+| SL      |  0.1588652|  0.0447598|  0.0711359|  0.2465945|  0.0003863|
+| TMLE    |  0.1388123|  0.0418396|  0.0568066|  0.2208180|  0.0009075|
+
 CPAR parameter
 --------------
 
@@ -723,25 +710,13 @@ res.ci = rbind(res.ci, c(est = cpar.tmle, se = se.tmle, lower95 = cpar.tmle -
     1.96 * se.tmle, upper95 = cpar.tmle + 1.96 * se.tmle, pvalue = 2 * (1 - 
     pnorm(abs(cpar.tmle/se.tmle)))))
 rownames(res.ci) = c("Simpler", "Sat", "SL", "TMLE")
-tab3 = xtable::xtable(res.ci, caption = "Estimation of CPAR using estimators based on simple logistc regression (Simpler), saturated model (Sat: nonparametric), SuperLearning (SL) and TMLE", 
-    label = "tab3", digits = 4)
 ```
 
 We examine the results in .
 
-% latex table generated in R 3.3.2 by xtable 1.8-2 package % Fri Dec 16 16:34:17 2016
-\begin{table}[ht]
-\centering
-\begin{tabular}{rrrrrr}
-  \hline
- & est & se & lower95 & upper95 & pvalue \\ 
-  \hline
-Simpler & 0.0254 & 0.0059 & 0.0140 & 0.0369 & 0.0000 \\ 
-  Sat & 0.0263 & 0.0119 & 0.0030 & 0.0495 & 0.0266 \\ 
-  SL & 0.0323 & 0.0117 & 0.0094 & 0.0552 & 0.0057 \\ 
-  TMLE & 0.0327 & 0.0117 & 0.0098 & 0.0556 & 0.0052 \\ 
-   \hline
-\end{tabular}
-\caption{Estimation of CPAR using estimators based on simple logistc regression (Simpler), saturated model (Sat: nonparametric), SuperLearning (SL) and TMLE} 
-\label{tab3}
-\end{table}
+|         |        est|         se|    lower95|    upper95|     pvalue|
+|:--------|----------:|----------:|----------:|----------:|----------:|
+| Simpler |  0.0254336|  0.0058576|  0.0139527|  0.0369146|  0.0000141|
+| Sat     |  0.0262809|  0.0118528|  0.0030495|  0.0495124|  0.0266039|
+| SL      |  0.0323068|  0.0116972|  0.0093803|  0.0552334|  0.0057463|
+| TMLE    |  0.0326821|  0.0116833|  0.0097829|  0.0555814|  0.0051525|
