@@ -162,7 +162,7 @@ We examine the results in Table 1.
 
 ``` r
 library(knitr)
-knitr::kable(dt.out, format = "markdown",caption="Screw you")
+knitr::kable(dt.out, format = "markdown")
 ```
 **Table 1:** True Parameter Values.
 
@@ -181,7 +181,7 @@ Nonparametric Model
 For this, we simply get the proportion of *Y* = 1 among the 10 unique groups defined by both *A* and *W*. The substitution estimator in general is: $$\hat{crd}=\frac{1}{n} \sum\_{i=1}^n \hat{Y}(1,W_i)-\hat{Y}(0,W_i)$$
 
 
- where $\\hat{Y}(a,W)$ is simply the predicted value (whatever the procedure used) of *Y* when *A* is set to *a* for a subject, but one uses their observed *W*. To esitmate the populaiton attributable risk (or *E*(*Y*(0)−*Y*),the resulting estimator is very similar:
+where $\\hat{Y}(a,W)$ is simply the predicted value (whatever the procedure used) of *Y* when *A* is set to *a* for a subject, but one uses their observed *W*. To esitmate the populaiton attributable risk (or *E*(*Y*(0)−*Y*),the resulting estimator is very similar:
 $$
 \\widehat{cpar}=\\frac{1}{n} \\sum\_{i=1}^n \\hat{Y}(A\_i,W\_i)-\\hat{Y}(0,W\_i),
 $$
