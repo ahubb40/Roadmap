@@ -178,14 +178,22 @@ In next subsections, we explore estimation using different methods with differen
 Nonparametric Model
 -------------------
 
-For this, we simply get the proportion of *Y* = 1 among the 10 unique groups defined by both *A* and *W*. The substitution estimator in general is: $$\hat{crd}=\frac{1}{n} \sum\_{i=1}^n \hat{Y}(1,W_i)-\hat{Y}(0,W_i)$$
+For this, we simply get the proportion of *Y* = 1 among the 10 unique groups defined by both *A* and *W*. The substitution estimator in general is: 
+
+$$\hat{crd}=\frac{1}{n} \sum\_{i=1}^n \hat{Y}(1,W_i)-\hat{Y}(0,W_i)$$
 
 
-where $\\hat{Y}(a,W)$ is simply the predicted value (whatever the procedure used) of *Y* when *A* is set to *a* for a subject, but one uses their observed *W*. To esitmate the populaiton attributable risk (or *E*(*Y*(0)−*Y*),the resulting estimator is very similar:
+where 
+$$\\hat{Y}(a,W)$$
+
+is simply the predicted value (whatever the procedure used) of *Y* when *A* is set to *a* for a subject, but one uses their observed *W*. To esitmate the populaiton attributable risk (or *E*(*Y*(0)−*Y*),the resulting estimator is very similar:
+
 $$
 \\widehat{cpar}=\\frac{1}{n} \\sum\_{i=1}^n \\hat{Y}(A\_i,W\_i)-\\hat{Y}(0,W\_i),
 $$
- where $\\hat{Y}(A\_i,W\_i)$ is the predicted value for both the observed value of the confounders, *W*<sub>*i*</sub> and the observed treatment *A*<sub>*i*</sub>.
+ where 
+ $$\\hat{Y}(A\_i,W\_i)$$ 
+ is the predicted value for both the observed value of the confounders, *W*<sub>*i*</sub> and the observed treatment *A*<sub>*i*</sub>.
 
 When we use the nonparametric (or \`\`saturated'') model here, it's the equivalent of fitting a logistic regression model of form
 $$
