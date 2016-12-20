@@ -3,6 +3,7 @@ layout: page
 title: Appendix
 tagline:
 description:
+use_math: true
 ---
 
 APPENDIX B
