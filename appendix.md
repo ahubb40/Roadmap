@@ -22,12 +22,12 @@ Data Generating Model
 =====================
 
 The simulation is based on the following model: *W* is uniform across integers
-1-5, \\( P(A = 1 \mid W) = 0.1200, 0.1025, 0.0850, 0.0675, 0.0500 \\) for \\(
-W = 1, 2, 3, 4, 5 \\) respecitively. The model for *Y* is binomial, based on
+1-5, \\(P(A = 1 \mid W) = 0.1200, 0.1025, 0.0850, 0.0675, 0.0500\\) for
+\\(W = 1, 2, 3, 4, 5\\) respecitively. The model for *Y* is binomial, based on
 the logistic regression model:
-\\( \text{logit}(P(Y \mid A = a, W = w)) = b_{0} + b_{1}a + b_{2} \cdot (w − 1)
+\\(\text{logit}(P(Y \mid A = a, W = w)) = b_{0} + b_{1}a + b_{2} \cdot (w − 1)
 + b_{3} \cdot (w − 1)^{2} + b_{4} \cdot a \cdot (w − 1)^{2}\\), with
-+ \\( b_{0}, b_{1}, b_{2}, b_{3}, b_{4} = ( − 2, 1, −0.25, 0.05, −0.05 ) \\).
++ \\(b_{0}, b_{1}, b_{2}, b_{3}, b_{4} = ( − 2, 1, −0.25, 0.05, −0.05 )\\).
 
 ``` r
 ### Data Generating Function
@@ -74,8 +74,8 @@ points(w, PYgivena0w, pch = "0")
 
 
 Figure 1 depicts the probabilities of the outcome *Y* for the exposed (the 1s)
-and the unexposed (the 0s), by categories of the *W*, or \\( P(Y \mid A, W)
-\\). The association of *A* with *Y* is stronger for lower values of *W*, as
+and the unexposed (the 0s), by categories of the *W*, or \\(P(Y \mid A, W)\\).
+The association of *A* with *Y* is stronger for lower values of *W*, as
 evidenced by the larger difference between the 1 and 0 data points on the plot.
 Using the example from the chapter, this depicts a situation in which physical
 abuse (*A*) has a stronger association with pychopathology in adulthood (*Y*)
@@ -88,7 +88,7 @@ plot(w, PAgivenW, type = "s", lty = 2, xlab = "w", ylab = "Propensity Score: P(A
     ylim = c(0, 0.2))
 ```
 
-![\\( P(A = 1 \mid W) \\)](AppendixBRoadmapChapter_files/figure-markdown_github/sim2.dat-1.png)
+![\\(P(A = 1 \mid W)\\)](AppendixBRoadmapChapter_files/figure-markdown_github/sim2.dat-1.png)
 
 **Figure 2:** The true treatment mechanism
 
@@ -167,7 +167,7 @@ plot(w, yprobobs[, 1], pch = "1", ylim = c(0, 0.4), xlab = "w", ylab = expressio
 points(w, yprobobs[, 2], pch = "0")
 ```
 
-![Figure 3: \\( \hat{P}(Y = 1 \mid A = a, W = w) \\) based on saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/get.true-1.png)
+![Figure 3: \\(\hat{P}(Y = 1 \mid A = a, W = w)\\) based on saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/get.true-1.png)
 
 **Figure 3:** Estimated \\( P(Y = 1 \mid A = a, W = w) \\) based on saturated
 model.
@@ -183,11 +183,7 @@ We examine the results in Table 1.
 
 ``` r
 library(knitr)
-<<<<<<< HEAD
 knitr::kable(dt.out, format = "markdown")
-=======
-knitr::kable(dt.out, format = "markdown", caption="Screw you")
->>>>>>> mathjaxfix
 ```
 **Table 1:** True Parameter Values.
 
@@ -203,20 +199,16 @@ In next subsections, we explore estimation using different methods with differen
 Nonparametric Model
 -------------------
 
-<<<<<<< HEAD
-For this, we simply get the proportion of *Y* = 1 among the 10 unique groups defined by both *A* and *W*. The substitution estimator in general is:
-=======
-For this, we simply get the proportion of \\( Y = 1 \\) among the 10 unique groups defined by both *A* and *W*. The substitution estimator in general is:
+For this, we simply get the proportion of \\(Y = 1\\) among the 10 unique groups defined by both *A* and *W*. The substitution estimator in general is:
 $$
 \hat{crd} = \frac{1}{n} \sum_{i=1}^{n} \hat{Y}(1, W_{i}) - \hat{Y}(0,W_{i})
 $$
- where \\( \hat{Y}(a,W) \\) is simply the predicted value (whatever the procedure used) of *Y* when *A* is set to *a* for a subject, but one uses their observed *W*. To esitmate the populaiton attributable risk (or \\( E(Y(0)−Y) \\),the resulting estimator is very similar:
+ where \\(\hat{Y}(a,W)\\) is simply the predicted value (whatever the procedure used) of *Y* when *A* is set to *a* for a subject, but one uses their observed *W*. To esitmate the populaiton attributable risk (or \\(E(Y(0)−Y)\\),the resulting estimator is very similar:
 $$
 \widehat{cpar} = \frac{1}{n} \sum_{i=1}^{n} \hat{Y}(A_i,W_i) - \hat{Y}(0, W_i),
 $$
- where \\( \hat{Y}(A\_i,W\_i) \\) is the predicted value for both the observed
- value of the confounders, \\( W_{i} \\) and the observed treatment
- \\( A_{i} \\).
+where \\(\hat{Y}(A\_i,W\_i)\\) is the predicted value for both the observed
+value of the confounders, \\(W_{i}\\) and the observed treatment \\(A_{i}\\).
 
 When we use the nonparametric (or "saturated") model here, it's the equivalent of fitting a logistic regression model of form
 $$
@@ -365,7 +357,7 @@ predA1 = predict(glm1, newdata = datn, type = "response")
 lines(w, predA1, lty = 2, col = 2)
 ```
 
-![$\\hat{P}(Y=1 \\mid A=a,W=w)$ based on simpler model - the lines are the fit from simpler model whereas points from saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/plot.glm-1.png)
+![\\(\hat{P}(Y=1 \mid A=a,W=w)\\) based on simpler model - the lines are the fit from simpler model whereas points from saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/plot.glm-1.png)
 
 ``` r
 ## Update results data.frame with glm results
@@ -373,7 +365,7 @@ res.out = cbind(res.out, glm.predA1 = predA1, glm.predA0 = predA0, glm.diff = pr
     predA0)
 ```
 
-Now, using this model result to derive \\( \hat{Y}(a, W) \\) for our crd
+Now, using this model result to derive \\(\hat{Y}(a, W)\\) for our crd
 estimator, we get:
 
 ``` r
@@ -440,7 +432,7 @@ best routine or weighted combination of routines without overfitting. Our
 implementation is based on using 2 simple learners: simple logistic regression
 with only main terms for both *A* and unordered categorical *W*. We also
 implement stepwise logistic regression, allowing for main terms and 2-way
-interactions (e.g., \\( I(W = w) \cdot A) \\). See Figure for results.
+interactions (e.g., \\(I(W = w) \cdot A)\\). See Figure for results.
 
 ``` r
 ## Examples of wrappers of learners to add to SL
@@ -500,7 +492,7 @@ p1 = predict(SLfit, plotdat)$pred
 lines(w, p1, lty = 2, col = 2)
 ```
 
-![$\\hat{P}(Y=1 \\mid A=a,W=w)$ based on SL fit - the lines are the fit from SL fit whereas points from saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/SL1-1.png)
+![\\(\hat{P}(Y=1 \mid A=a,W=w)\\) based on SL fit - the lines are the fit from SL fit whereas points from saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/SL1-1.png)
 
 ``` r
 ## Udate results
