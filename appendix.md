@@ -197,7 +197,7 @@ Estimators
 In next subsections, we explore estimation using different methods with different assumptions from nonparametric model (no assumptions) to assuming smoother (more parametric) models.
 
 Nonparametric Model
--------------------
+===================
 
 For this, we simply get the proportion of \\(Y = 1\\) among the 10 unique groups defined by both *A* and *W*. The substitution estimator in general is:
 $$
@@ -253,7 +253,7 @@ print(cpar.sat)
     ## [1] 0.01440006
 
 Simpler Logistic Regression Model
----------------------------------
+=================================
 
 The most common way that researchers estimate the effect of *A* on *Y*, is to
 assume a parametric model, adjusting for *W*. Here we fit a main terms logistic
@@ -421,7 +421,7 @@ print(cpar.glm)
     ## [1] 0.01434152
 
 Semiparametric Machine Learning (SuperLearner)
-----------------------------------------------
+==============================================
 
 To demonstrate an alternative approach which is based upon flexible, data
 adaptive methods, we also fit the the regression model using the so-called
@@ -499,7 +499,9 @@ lines(w, p1, lty = 2, col = 2)
 res.out = cbind(res.out, SL.predA1 = p1, SL.predA0 = p0, SL.diff = p1 - p0)
 ```
 
-\subsection{TMLE}
+TMLE
+====
+
 Using SuperLearner to fit the outcome model has the potential to do better than
 the simple parametric model. However, the model fit will not be optimal for the
 parameter of interest, and there is no theory based way to get statistical
