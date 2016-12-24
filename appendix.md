@@ -22,12 +22,19 @@ Data Generating Model
 =====================
 
 The simulation is based on the following model: *W* is uniform across integers
-1-5, \(P(A = 1 \mid W) = 0.1200, 0.1025, 0.0850, 0.0675, 0.0500\) for
-\(W = 1, 2, 3, 4, 5\) respecitively. The model for *Y* is binomial, based on
+1-5, P(A = 1 | W) = 0.1200, 0.1025, 0.0850, 0.0675, 0.0500 for
+W = 1, 2, 3, 4, 5, respecitively. The model for *Y* is binomial, based on
 the logistic regression model:
-\(\text{logit}(P(Y \mid A = a, W = w)) = b\_{0} + b\_{1}a + b\_{2} \cdot (w − 1)
-+ b\_{3} \cdot (w − 1)^{2} + b\_{4} \cdot a \cdot (w − 1)^{2}\), with
-+ \(b\_{0}, b\_{1}, b\_{2}, b\_{3}, b\_{4} = ( − 2, 1, −0.25, 0.05, −0.05 )\).
+
+{% raw %}
+$$
+\text{logit}(P(Y \mid A = a, W = w)) = b_{0} + b_{1}a + b_{2} \cdot (w − 1)
++ b_{3} \cdot (w − 1)^{2} + b_{4} \cdot a \cdot (w − 1)^{2}
+$$
+{% endraw %}
+
+with {% raw %} \( b_{0}, b_{1}, b_{2}, b_{3}, b_{4} = 
+( − 2, 1, −0.25, 0.05, −0.05 ) \) {% endraw %}.
 
 ``` r
 ### Data Generating Function
@@ -68,13 +75,13 @@ PYgivena1w = 1/(1 + exp(-(Xt %*% bY)))
 plot(w, PYgivena1w, pch = "1", ylim = c(0, 0.5), xlab = "w", ylab = "P(Y=1|A=a,W=w)")
 points(w, PYgivena0w, pch = "0")
 ```
-![stuff](AppendixBRoadmapChapter_files/figure-markdown_github/sim.dat-1.png "Title x")
+![stuff](AppendixBRoadmapChapter_files/figure-markdown_github/sim.dat-1.png)
 
-**Figure 1:** True model of \(P(Y = 1 \mid A = a, W = w)\)
+**Figure 1:** True model of P(Y = 1 | A = a, W = w)
 
 
 Figure 1 depicts the probabilities of the outcome *Y* for the exposed (the 1s)
-and the unexposed (the 0s), by categories of the *W*, or \(P(Y \mid A, W)\).
+and the unexposed (the 0s), by categories of the *W*, or P(Y | A, W).
 The association of *A* with *Y* is stronger for lower values of *W*, as
 evidenced by the larger difference between the 1 and 0 data points on the plot.
 Using the example from the chapter, this depicts a situation in which physical
@@ -88,7 +95,7 @@ plot(w, PAgivenW, type = "s", lty = 2, xlab = "w", ylab = "Propensity Score: P(A
     ylim = c(0, 0.2))
 ```
 
-![\(P(A = 1 \mid W)\)](AppendixBRoadmapChapter_files/figure-markdown_github/sim2.dat-1.png)
+![P(A = 1 | W)](AppendixBRoadmapChapter_files/figure-markdown_github/sim2.dat-1.png)
 
 **Figure 2:** The true treatment mechanism
 
@@ -167,12 +174,12 @@ plot(w, yprobobs[, 1], pch = "1", ylim = c(0, 0.4), xlab = "w", ylab = expressio
 points(w, yprobobs[, 2], pch = "0")
 ```
 
-![Figure 3: \(\hat{P}(Y = 1 \mid A = a, W = w)\) based on saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/get.true-1.png)
+![Figure 3: {% raw %} \( \hat{P}(Y = 1 \mid A = a, W = w) \) {% endraw %} based on saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/get.true-1.png)
 
-**Figure 3:** Estimated \(P(Y = 1 \mid A = a, W = w)\) based on saturated
+**Figure 3:** Estimated P(Y = 1 | A = a, W = w) based on saturated
 model.
 
-This results in the following true value of the causal risk difference (CRD) :
+This results in the following true value of the causal risk difference (CRD):
 
 ``` r
 ## Accumulate results so far into a data.frame and table
@@ -199,28 +206,40 @@ In next subsections, we explore estimation using different methods with differen
 Nonparametric Model
 ===================
 
-For this, we simply get the proportion of \(Y = 1\) among the 10 unique
+For this, we simply get the proportion of Y = 1 among the 10 unique
 groups defined by both *A* and *W*. The substitution estimator in general is:
 
-$$\hat{crd} = \frac{1}{n} \sum\_{i=1}^{n} \hat{Y}(1, W\_{i}) -
-\hat{Y}(0,W\_{i})$$
+{% raw %}
+$$
+\hat{crd} = \frac{1}{n} \sum_{i=1}^{n} \hat{Y}(1, W_{i}) - \hat{Y}(0,W_{i})
+$$
+{% endraw %}
 
-where \(\hat{Y}(a,W)\) is simply the predicted value (whatever the procedure
-used) of *Y* when *A* is set to *a* for a subject, but one uses their observed
-*W*. To esitmate the populaiton attributable risk (or \(E(Y(0)−Y)\),the
-resulting estimator is very similar:
+where {% raw %} \( \hat{Y}(a,W) \) {% endraw %} is simply the predicted value
+(whatever the procedure used) of *Y* when *A* is set to *a* for a subject, but
+one uses their observed *W*. To esitmate the populaiton attributable risk (or
+E(Y(0)−Y),the resulting estimator is very similar:
 
-$$\widehat{cpar} = \frac{1}{n} \sum\_{i=1}^{n} \hat{Y}(A\_i,W\_i) -
-\hat{Y}(0, W\_i),$$
+{% raw %}
+$$
+\widehat{cpar} = \frac{1}{n} \sum_{i = 1}^{n} \hat{Y}(A_i, W_i) -
+\hat{Y}(0, W_i)
+$$
+{% endraw %}
 
-where \(\hat{Y}(A\_i,W\_i)\) is the predicted value for both the observed
-value of the confounders, \(W\_{i}\) and the observed treatment \(A\_{i}\).
+where {% raw %} \( \hat{Y}(A_i, W_i) \) {% endraw %} is the predicted value for
+both the observed value of the confounders, {% raw %} \( W_{i} \) {% endraw %}
+and the observed treatment {% raw %}\( A_{i} \) {% endraw %}.
 
 When we use the nonparametric (or "saturated") model here, it's the equivalent
 of fitting a logistic regression model of form
 
-$$\text{logit}(P(Y \mid A = a, W = w)) = b\_{0} + b\_{1} a + \sum\_{j = 2}^{5}
-b\_{j} \cdot I(w = j) + c\_{j} \cdot a \cdot I(w = j)$$
+{% raw %}
+$$
+\text{logit}(P(Y \mid A = a, W = w)) = b_{0} + b_{1} a + \sum_{j = 2}^{5}
+b_{j} \cdot I(w = j) + c_{j} \cdot a \cdot I(w = j)
+$$
+{% endraw %}
 
 which simply has all the appropriate dummy variables for the categories the
 interactions of those with the variable of interest. Given this model assumes
@@ -271,8 +290,12 @@ assume a parametric model, adjusting for *W*. Here we fit a main terms logistic
 regression, as was done in the analysis in the chapter. Specifically, we fit a
 simpler model similar to above but without the interaction terms:
 
-$$\text{logit}(P(Y \mid A = a, W = w)) = b\_{0} + b\_{1} a + \sum\_{j = 2}^{5}
-b\_{j} \cdot I(w = j)$$
+{% raw %}
+$$
+\text{logit}(P(Y \mid A = a, W = w)) = b_{0} + b_{1} a + \sum_{j = 2}^{5}
+b_{j} \cdot I(w = j)
+$$
+{% endraw %}
 
 ``` r
 ## Fit linear-logistic model (not saturated) for Y|A,W
@@ -375,8 +398,8 @@ res.out = cbind(res.out, glm.predA1 = predA1, glm.predA0 = predA0, glm.diff = pr
     predA0)
 ```
 
-Now, using this model result to derive \\(\hat{Y}(a, W)\\) for our crd
-estimator, we get:
+Now, using this model result to derive
+{% raw %} \( \hat{Y}(a, W) \) {% endraw %} for our crd estimator, we get:
 
 ``` r
 ## Use model to predict Y at A=0,W and A=1,W.
@@ -442,7 +465,8 @@ best routine or weighted combination of routines without overfitting. Our
 implementation is based on using 2 simple learners: simple logistic regression
 with only main terms for both *A* and unordered categorical *W*. We also
 implement stepwise logistic regression, allowing for main terms and 2-way
-interactions (e.g., \\(I(W = w) \cdot A)\\). See Figure for results.
+interactions (e.g., {% raw %} \( I(W = w) \cdot A) \) {% endraw %}. See Figure
+for results.
 
 ``` r
 ## Examples of wrappers of learners to add to SL
@@ -502,7 +526,7 @@ p1 = predict(SLfit, plotdat)$pred
 lines(w, p1, lty = 2, col = 2)
 ```
 
-![\(\hat{P}(Y=1 \mid A=a,W=w)\) based on SL fit - the lines are the fit from SL fit whereas points from saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/SL1-1.png)
+![{% raw %} \( \hat{P}(Y=1 \mid A=a, W=w) \) {% endraw %} based on SL fit - the lines are the fit from SL fit whereas points from saturated model](AppendixBRoadmapChapter_files/figure-markdown_github/SL1-1.png)
 
 ``` r
 ## Udate results
@@ -519,13 +543,12 @@ inference (confidence intervals). Targeted Maximum Likelihood Estimation (TMLE)
 works by modifying the initial estimator based on data-adaptive fitting of the
 outcome model, such that the resulting model provides a more targeted
 bias-variance trade-off for the parameter of interest. TMLE uses a simple
-augmentation of the original fit of \(E(Y \mid A, W)\), by adding a "clever
-covariate" that is related to the propensity score, also known as the treatment
-mechanism \(P(A = 1 \mid W)\). Informally, one can think of this covariate
-as capturing residual confounding specific to the parameter of
-interest. Finally, we used TMLE, using the SL fit discussed above as the
-initial fit, and using simple logistic regression to derive the propensity
-score used in the clever covariate.
+augmentation of the original fit of E(Y | A, W), by adding a "clever covariate"
+that is related to the propensity score, also known as the treatment mechanism
+P(A = 1 | W). Informally, one can think of this covariate as capturing residual
+confounding specific to the parameter of interest. Finally, we used TMLE, using
+the SL fit discussed above as the initial fit, and using simple logistic
+regression to derive the propensity score used in the clever covariate.
 
 ``` r
 ## wrapper for simple (mispecified) glm learner
